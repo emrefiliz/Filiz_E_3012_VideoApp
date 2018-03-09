@@ -9,8 +9,7 @@ var toRender = (config.kidsmode) ? 'main_kids' : 'home';
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render(toRender, {
-    title: 'Done yet?',
-    message : "handlebars is awesome",
+    title: 'Video App',
     mainpage : true,
     kidsmode : config.kidsmode
   });

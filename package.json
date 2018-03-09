@@ -1,5 +1,5 @@
 {
-  "name": "nodesql",
+  "name": "videoapp",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,5 +14,11 @@
     "morgan": "~1.8.1",
     "mysql": "^2.15.0",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony"
   }
 }
