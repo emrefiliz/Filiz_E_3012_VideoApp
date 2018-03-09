@@ -6,10 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var xhb = require('express-handlebars');
 
-var index = require('./routes/index');
-var movie = require('./routes/movie');
-var music = require('./routes/music');
-
 var app = express();
 
 // view engine setup
@@ -25,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/movie', movie);
-app.use('/music', music);
+app.use('/', require('./routes/index'));
+app.use('/movie', require('./routes/movie'));
+app.use('/music', require('./routes/music'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,7 +43,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// module.exports = app;
-app.listen(3000, () => {
-  console.log('Running on port 3000...');
-});
+module.exports = app;

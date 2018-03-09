@@ -15,4 +15,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.put('/movie', function (req, res) {
+  res.send('Got a PUT request at /movie')
+});
+
 module.exports = router;
