@@ -1,11 +1,11 @@
 var config = {
-  user : "root",
-  password : "root", // leave this blank for windows machines
-  port: 8889,
-  host: "localhost",
-  database: "cooperStuff",
+  user: 'root',
+  password: '',
+  port: 3306,
+  host: 'localhost',
+  database: 'db_videoapp',
 
-  kidsmode : true
-}
+  kidsmode: false
+};
 
 module.exports = config;
