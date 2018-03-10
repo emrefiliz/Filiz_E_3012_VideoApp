@@ -11,9 +11,38 @@
 </ul>
 <div id="movie-thumbnail">
     <h1 class="section-title">{{ message }}</h1>
-    <div class="thumbnail-list">
-        <ul>
-
-        </ul>
+    <div class="thumbnail-list card-group">
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title h3"></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="media">
+                    <img class="mr-3" id="movieCover">
+                    <div class="media-body">
+                        <a class="h5" id="movieModalLabel"></a>
+                        <a class="h6 float-right" id="movieRating"></a>
+                        <br>
+                        <smal>Genre:</smal>
+                        <small id="movieGenre"></small><small> | Year:</small>
+                        <small id="movieYear"></small><small> | PG Rating:</small>
+                        <small id="moviePG"></small>
+                        <a class="h6">Storyline</a>
+                        <p class="lead" id="movieStoryline"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
