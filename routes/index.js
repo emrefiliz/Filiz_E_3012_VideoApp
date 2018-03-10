@@ -4,19 +4,16 @@ var config = require('../config');
 
 // do some checking here => check the default user profile
 // ternary statement => MDN ternary
-var toRender = (config.kidsmode) ? 'main_kids' : 'home';
+var toRender = (config.kidsmode) ? 'home_kids' : 'home';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render(toRender, {
     title: 'Video App',
     mainpage : true,
-    kidsmode : config.kidsmode
+    message: 'Welcome',
+    kidsmode : (config.kidsmode) ? 'Kids' : 'Adults'
   });
-});
-
-router.put('/movie', function (req, res) {
-  res.send('Got a PUT request at /movie')
 });
 
 module.exports = router;
