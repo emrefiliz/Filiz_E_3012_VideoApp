@@ -40,7 +40,7 @@
         let movieModal = document.querySelector("#movieModal");
         let movieTitle = movieModal.querySelector("#movieModalLabel");
         let movieYear = movieModal.querySelector("#movieYear");
-        let movieCover = movieModal.querySelector("#movieCover");
+        let movieCover = movieModal.querySelector("#modalPhoto");
         let movieRating = movieModal.querySelector("#movieRating");
         let movieStoryline = movieModal.querySelector("#movieStoryline");
 
@@ -109,11 +109,46 @@
         let artistWrapper = artistThumbnailsDiv.querySelector(
           ".thumbnail-list"
         );
-        data.movies.forEach(({ artist_id, artist_name, artist_photo }) => {
-          let artistThumbnail = `<div class="card"><img data-id=${artist_id} src="images/${artist_photo}" alt="${artist_name} cover" class="card-img-top artist-thumbnail"><div class="card-body">
+        data.artists.forEach(({ artist_id, artist_name, artist_photo }) => {
+          let artistThumbnail = `<div class="card"><img data-id=${artist_id} data-toggle="modal" data-target="#musicModal" src="images/${artist_photo}" alt="${artist_name} cover" class="card-img-top artist-thumbnail"><div class="card-body">
           <h5 class="card-title">${artist_name}</h5></div></div>`;
           artistWrapper.innerHTML += artistThumbnail;
         });
+        let artists = artistWrapper.querySelectorAll(".artist-thumbnail");
+        artists.forEach(movie => {
+          movie.addEventListener("click", getArtistDetails, false);
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
+  function getArtistDetails(evt) {
+    let id = evt.currentTarget.dataset.id;
+    getArtistInformation(id);
+    //getArtistAlbums(id);
+  }
+
+  function getArtistInformation(movieId) {
+    let url = "music/getArtist/" + movieId;
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => {
+        let musicModal = document.querySelector("#musicModal");
+        let musicModalLabel = musicModal.querySelector("#musicModalLabel");
+        let artistPhoto = musicModal.querySelector("#modalPhoto");
+        let artistAlbums = musicModal.querySelector("#artistAlbums");
+
+        data.artist.forEach(
+          ({
+            artist_name,
+            artist_photo,
+          }) => {
+            musicModalLabel.innerHTML = artist_name;
+            artistPhoto.src = `images/${artist_photo}`;
+          }
+        );
       })
       .catch(function(error) {
         console.log(error);

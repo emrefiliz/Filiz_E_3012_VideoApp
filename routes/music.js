@@ -20,7 +20,23 @@ router.get("/getArtists", (req, res) => {
     } else {
       console.log(result);
       res.json({
-        movies: result
+        artists: result
+      });
+    }
+  });
+});
+
+// Get Detailed Information of an Artist by Id
+router.get("/getArtist/:id", (req, res) => {
+  let getArtist = `SELECT * FROM tbl_artist WHERE artist_id = ${req.params.id}`;
+  connect.query(getArtist, (err, result) => {
+    if (err) {
+      throw err;
+      console.log(err);
+    } else {
+      console.log(result);
+      res.json({
+        artist: result
       });
     }
   });
